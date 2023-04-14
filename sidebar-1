@@ -1,0 +1,34 @@
+<?php 
+
+// create a separate file with your widget code and store it inside the inc/ folder.
+
+
+
+// Add this code below to your functions.php file
+// First, link the widget class file to the function.php file:
+
+require get_template_directory() . 'inc/widget-about.php';
+
+
+
+
+
+  // Second, register the widget under your sidebar
+
+function digital_media_garden_blog_widgets_init() {
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar', 'digital-media-garden-blog' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'digital-media-garden-blog' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s popPosts">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="class="sideHeading">',
+			'after_title'   => '</h3>',
+		)
+	);
+}
+add_action( 'widgets_init', 'digital_media_garden_blog_widgets_init' );
+
+
+?>
